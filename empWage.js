@@ -4,6 +4,7 @@ const PART_TIME_HRS = 4;
 const FULL_TIME_HRS = 8;
 const WAGE_PER_HR = 20;
 const NO_OF_WORKING_DAYS = 20;
+const MAX_WORKING_HRS = 160;
 
 function getEmpHrs(empCheck){
     switch(empCheck) {
@@ -20,14 +21,15 @@ function getEmpHrs(empCheck){
 
 
 let empWage;
-let empHrs = 0;
+let TotalEmpHrs = 0;
+let totalWorkingDays = 0;
 
-for(let days = 0; days < NO_OF_WORKING_DAYS; days++){
+while (totalWorkingDays < NO_OF_WORKING_DAYS && TotalEmpHrs <= MAX_WORKING_HRS){
     let empCheck = Math.round(Math.random() * 10) % 3;
-    empHrs += getEmpHrs(empCheck); 
+    TotalEmpHrs += getEmpHrs(empCheck);
+    totalWorkingDays++;
 }
 
+empWage = TotalEmpHrs * WAGE_PER_HR;
 
-empWage = empHrs * WAGE_PER_HR;
-
-console.log(`total hours of working ${empHrs} Employee wage is ${empWage}`);
+console.log(`total woorking days ${totalWorkingDays} total hours of working ${TotalEmpHrs} Employee wage is ${empWage}`);
