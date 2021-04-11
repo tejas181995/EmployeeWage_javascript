@@ -4,20 +4,22 @@ const PART_TIME_HRS = 4;
 const FULL_TIME_HRS = 8;
 const WAGE_PER_HR = 20;
 
-let empCheck = Math.round(Math.random() * 10) % 3;
-let empHrs = 0;
-let empWage;
-
-switch(empCheck) {
+function getEmpHrs(empCheck){
+    switch(empCheck) {
     case IS_FULLTIME:
-        empHrs = FULL_TIME_HRS;
+        return FULL_TIME_HRS;
         break;
     case IS_PARTTIME:
-        empHrs = PART_TIME_HRS;
+        return PART_TIME_HRS;
         break;
     default:
-        empHrs = 0;
+        return 0;
+    }
 }
+
+let empCheck = Math.round(Math.random() * 10) % 3;
+let empWage;
+let empHrs = getEmpHrs(empCheck);
 
 empWage = empHrs * WAGE_PER_HR;
 
